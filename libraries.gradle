@@ -1,7 +1,16 @@
 ext {
 
     libraries = [
-            springCloudFeign: 'org.springframework.cloud:spring-cloud-starter-feign:1.0.3.RELEASE',
+
+            springBootWeb:     'org.springframework.boot:spring-boot-starter-web:1.2.5.RELEASE',
+
+            springCloudFeign:  'org.springframework.cloud:spring-cloud-starter-feign:1.0.3.RELEASE',
+            springCloudRibbon: 'org.springframework.cloud:spring-cloud-starter-ribbon:1.0.3.RELEASE',
+
+            feignCore:         'com.netflix.feign:feign-core:8.7.1',
+            feignHttpClient:   'com.netflix.feign:feign-httpclient:8.7.1',
+
+            httpClient:        'org.apache.httpcomponents:httpclient:4.4.1',
 
             springBootTest: 'org.springframework.boot:spring-boot-starter-test:1.2.5.RELEASE',
 

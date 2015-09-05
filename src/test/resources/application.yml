@@ -1,0 +1,4 @@
+server:
+  tomcat:
+    compression: 1024
+    compressableMimeTypes: application/xml,application/json

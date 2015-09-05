@@ -38,10 +38,27 @@ repositories {
     jcenter()
 }
 
+configurations.all {
+    resolutionStrategy {
+        eachDependency { DependencyResolveDetails details ->
+            if (details.requested.group == 'com.netflix.feign') {
+                details.useVersion "8.7.1"
+            } else if(details.requested.group == 'org.apache.httpcomponents') {
+                details.useVersion "4.4.1"
+            }
+        }
+    }
+}
+
 dependencies {
 
     compile (libraries.springCloudFeign)
 
+    testCompile (libraries.springCloudRibbon)
+    testCompile (libraries.feignCore)
+    testCompile (libraries.feignHttpClient)
+    testCompile (libraries.httpClient)
+    testCompile (libraries.springBootWeb)
     testCompile (libraries.springBootTest)
     testCompile (libraries.junit)
     testCompile (libraries.mockito)

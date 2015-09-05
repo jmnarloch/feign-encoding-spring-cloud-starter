@@ -16,6 +16,6 @@ import java.lang.annotation.*;
 @Documented
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Import(EnableFeignAcceptGzipEncoding.class)
+@Import(FeignAcceptGzipEncodingConfiguration.class)
 public @interface EnableFeignAcceptGzipEncoding {
 }
