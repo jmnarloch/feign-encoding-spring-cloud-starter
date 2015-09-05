@@ -124,9 +124,8 @@ Caused by: com.fasterxml.jackson.core.JsonParseException: Illegal character ((CT
 	... 50 more
 ```
 
-In order to fix that you have to enable Feign Apache HttpClient:
-
-Add this to classes to your component scan packages:
+In order to fix that you have to enable Feign Apache HttpClient. 
+Add this two classes to your component scan packages:
 
 ```java
 @Configuration
