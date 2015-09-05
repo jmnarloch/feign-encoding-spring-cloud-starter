@@ -1,0 +1,11 @@
+ext {
+
+    libraries = [
+            springCloudFeign: 'org.springframework.cloud:spring-cloud-starter-feign:1.0.3.RELEASE',
+
+            springBootTest: 'org.springframework.boot:spring-boot-starter-test:1.2.5.RELEASE',
+
+            junit        : 'junit:junit:4.12',
+            mockito      : 'org.mockito:mockito-all:1.10.19'
+    ]
+}
