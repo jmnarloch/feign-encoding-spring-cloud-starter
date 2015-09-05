@@ -44,15 +44,15 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
- * Demonstrates usage of this component.
+ * Tests the response compression.
  *
  * @author Jakub Narloch
  */
 @WebAppConfiguration
 @IntegrationTest({"server.port=0"})
-@SpringApplicationConfiguration(classes = {Demo.Application.class})
+@SpringApplicationConfiguration(classes = {FeignContentEncodingTest.Application.class})
 @RunWith(SpringJUnit4ClassRunner.class)
-public class Demo {
+public class FeignContentEncodingTest {
 
     @Autowired
     private InvoiceClient invoiceClient;
@@ -75,7 +75,6 @@ public class Demo {
     }
 
     @EnableFeignContentGzipEncoding
-    @EnableFeignAcceptGzipEncoding
     @EnableFeignClients
     @RibbonClient(name = "local", configuration = LocalRibbonClientConfiguration.class)
     @ComponentScan("com.github.jmnarloch.spring.cloud.feign.app")

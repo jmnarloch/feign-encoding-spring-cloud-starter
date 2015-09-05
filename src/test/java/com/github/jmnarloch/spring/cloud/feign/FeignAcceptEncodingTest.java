@@ -44,15 +44,15 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
- * Demonstrates usage of this component.
+ * Tests the response compression.
  *
  * @author Jakub Narloch
  */
 @WebAppConfiguration
 @IntegrationTest({"server.port=0"})
-@SpringApplicationConfiguration(classes = {Demo.Application.class})
+@SpringApplicationConfiguration(classes = {FeignAcceptEncodingTest.Application.class})
 @RunWith(SpringJUnit4ClassRunner.class)
-public class Demo {
+public class FeignAcceptEncodingTest {
 
     @Autowired
     private InvoiceClient invoiceClient;
@@ -60,21 +60,17 @@ public class Demo {
     @Test
     public void compressedResponse() {
 
-        // given
-        final List<Invoice> invoices = Invoices.createInvoiceList(50);
-
         // when
-        final ResponseEntity<List<Invoice>> response = invoiceClient.saveInvoices(invoices);
+        final ResponseEntity<List<Invoice>> invoices = invoiceClient.getInvoices();
 
         // then
-        assertNotNull(response);
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertNotNull(response.getBody());
-        assertEquals(invoices.size(), response.getBody().size());
+        assertNotNull(invoices);
+        assertEquals(HttpStatus.OK, invoices.getStatusCode());
+        assertNotNull(invoices.getBody());
+        assertEquals(100, invoices.getBody().size());
 
     }
 
-    @EnableFeignContentGzipEncoding
     @EnableFeignAcceptGzipEncoding
     @EnableFeignClients
     @RibbonClient(name = "local", configuration = LocalRibbonClientConfiguration.class)

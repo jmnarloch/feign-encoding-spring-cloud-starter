@@ -22,7 +22,51 @@ Add the Spring Cloud starter to your project:
 
 ## Usage
 
-TBD
+To hint the server that client supports GZIP content encoded responses add `@EnableFeignAcceptGzipEncoding`
+
+```java
+@EnableFeignAcceptGzipEncoding
+@EnableFeignClients
+@Configuration
+public static class Application {
+
+}
+```
+
+## Server side setup
+
+### Spring Boot 1.2.x
+
+As long as you are using Spring Boot 1.2.x enabling GZIP compression varies depending on which embedded server you use:
+http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#how-to-enable-http-response-compression
+
+For Tomcat you need to specify fallowing properties:
+
+```yaml
+server:
+  tomcat:
+    compression: 1024
+    compressableMimeTypes: application/xml,application/json
+```
+
+If you use Undertow or Jetty you can use Jetty's GzipFilter instead. Although be aware that the GzipFilter has been 
+removed from jetty-servlets somewhere around version 9.3+
+
+### Spring Boot 1.3+
+
+Due to the removal of the Jetty GzipFilter Spring Boot 1.3 will bring it's own internal GZIP support:
+
+https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-1.3.0-M2-Release-Notes
+
+The new properties will work with any underlying application server.
+
+```yaml
+server:
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types: application/xml,application/json
+```
 
 ## License
 

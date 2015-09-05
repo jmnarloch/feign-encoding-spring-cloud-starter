@@ -15,20 +15,28 @@
  */
 package com.github.jmnarloch.spring.cloud.feign;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import com.github.jmnarloch.spring.cloud.feign.app.domain.Invoice;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 /**
- * Configures the Feign response compression.
+ * Utility class used for testing.
  *
  * @author Jakub Narloch
- * @see FeignAcceptGzipEncodingInterceptor
  */
-@Configuration
-public class FeignAcceptGzipEncodingConfiguration {
+final class Invoices {
 
-    @Bean
-    public FeignAcceptGzipEncodingInterceptor feignAcceptGzipEncodingInterceptor() {
-        return new FeignAcceptGzipEncodingInterceptor();
+    public static List<Invoice> createInvoiceList(int count) {
+        final List<Invoice> invoices = new ArrayList<>();
+        for (int ind = 0; ind < count; ind++) {
+            final Invoice invoice = new Invoice();
+            invoice.setTitle("Invoice " + (ind + 1));
+            invoice.setAmount(new BigDecimal(String.format(Locale.US, "%.2f", Math.random() * 1000)));
+            invoices.add(invoice);
+        }
+        return invoices;
     }
 }
