@@ -33,6 +33,9 @@ public static class Application {
 }
 ```
 
+You may want also to compress the request payloads in order to do this annotate your configuration class 
+with `@EnableFeignAcceptGzipEncoding`.
+
 ## Server side setup
 
 ### Spring Boot 1.2.x
