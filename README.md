@@ -33,8 +33,12 @@ public static class Application {
 }
 ```
 
-You may want also to compress the request payloads in order to do this annotate your configuration class 
-with `@EnableFeignAcceptGzipEncoding`.
+Remember that this does not make automatically *every* response compressed and relies entirely on the server 
+configuration. It may be selective and compress only specific media type or generally responses above specific 
+threshold size.
+
+You may also want to compress the request payloads. In order to do this annotate your configuration class 
+with `@EnableFeignContentGzipEncoding`.
 
 ## Server side setup
 
@@ -150,7 +154,7 @@ public class FeignApacheHttpClientAutoConfiguration {
 }
 ```
 
-```
+```java
 @Configuration
 @ConditionalOnClass({ ILoadBalancer.class, Feign.class })
 @AutoConfigureBefore(FeignAutoConfiguration.class)
