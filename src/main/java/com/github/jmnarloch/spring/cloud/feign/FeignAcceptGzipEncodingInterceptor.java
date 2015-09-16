@@ -15,7 +15,6 @@
  */
 package com.github.jmnarloch.spring.cloud.feign;
 
-import feign.RequestInterceptor;
 import feign.RequestTemplate;
 
 /**
@@ -26,7 +25,16 @@ import feign.RequestTemplate;
  *
  * @author Jakub Narloch
  */
-public class FeignAcceptGzipEncodingInterceptor implements RequestInterceptor {
+public class FeignAcceptGzipEncodingInterceptor extends BaseRequestInterceptor {
+
+    /**
+     * Creates new instance of {@link FeignAcceptGzipEncodingInterceptor}.
+     *
+     * @param properties the encoding properties
+     */
+    protected FeignAcceptGzipEncodingInterceptor(FeignClientEncodingProperties properties) {
+        super(properties);
+    }
 
     /**
      * {@inheritDoc}
@@ -34,6 +42,7 @@ public class FeignAcceptGzipEncodingInterceptor implements RequestInterceptor {
     @Override
     public void apply(RequestTemplate template) {
 
-        template.header(HttpEncoding.ACCEPT_ENCODING_HEADER, HttpEncoding.GZIP_ENCODING, HttpEncoding.DEFLATE_ENCODING);
+        addHeader(template, HttpEncoding.ACCEPT_ENCODING_HEADER, HttpEncoding.GZIP_ENCODING,
+                HttpEncoding.DEFLATE_ENCODING);
     }
 }

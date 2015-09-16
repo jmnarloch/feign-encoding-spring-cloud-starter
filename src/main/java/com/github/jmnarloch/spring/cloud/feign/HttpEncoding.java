@@ -23,6 +23,16 @@ package com.github.jmnarloch.spring.cloud.feign;
 public interface HttpEncoding {
 
     /**
+     * The HTTP Content-Length header.
+     */
+    String CONTENT_LENGTH = "Content-Length";
+
+    /**
+     * The HTTP Content-Type header.
+     */
+    String CONTENT_TYPE = "Content-Type";
+
+    /**
      * The HTTP Accept-Encoding header.
      */
     String ACCEPT_ENCODING_HEADER = "Accept-Encoding";

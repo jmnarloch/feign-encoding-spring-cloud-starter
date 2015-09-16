@@ -15,6 +15,7 @@
  */
 package com.github.jmnarloch.spring.cloud.feign;
 
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -25,10 +26,11 @@ import org.springframework.context.annotation.Configuration;
  * @see FeignContentGzipEncodingInterceptor
  */
 @Configuration
+@EnableConfigurationProperties(FeignClientEncodingProperties.class)
 public class FeignContentGzipEncodingConfiguration {
 
     @Bean
-    public FeignContentGzipEncodingInterceptor feignContentGzipEncodingInterceptor() {
-        return new FeignContentGzipEncodingInterceptor();
+    public FeignContentGzipEncodingInterceptor feignContentGzipEncodingInterceptor(FeignClientEncodingProperties properties) {
+        return new FeignContentGzipEncodingInterceptor(properties);
     }
 }

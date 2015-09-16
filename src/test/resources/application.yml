@@ -2,3 +2,8 @@ server:
   tomcat:
     compression: 1024
     compressableMimeTypes: application/xml,application/json
+
+feign:
+  compression:
+    min-request-size: 1024
+    mime-types: application/xml,application/json
