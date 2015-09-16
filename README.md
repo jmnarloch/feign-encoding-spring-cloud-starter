@@ -40,6 +40,17 @@ threshold size.
 You may also want to compress the request payloads. In order to do this annotate your configuration class 
 with `@EnableFeignContentGzipEncoding`.
 
+## Properties
+
+Starting from release 1.1 you gain more control over client side request compression. If you have used 
+`@EnableFeignContentGzipEncoding` annotation the below settings will allow you to control the request
+that should be compressed in order not to penalize performance of compressing too small requests. 
+
+```
+feign.compression.min-request-size: 2048 # the minimum request size
+feign.compression.mime-types: application/xml,application/json # the request mime types 
+```
+
 ## Server side setup
 
 ### Spring Boot 1.2.x
