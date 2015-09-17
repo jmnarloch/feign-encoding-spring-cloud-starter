@@ -2,6 +2,7 @@ ext {
 
     libraries = [
 
+            springBootConfigurationProcessor:     'org.springframework.boot:spring-boot-configuration-processor:1.2.5.RELEASE',
             springBootWeb:     'org.springframework.boot:spring-boot-starter-web:1.2.5.RELEASE',
 
             springCloudFeign:  'org.springframework.cloud:spring-cloud-starter-feign:1.0.3.RELEASE',

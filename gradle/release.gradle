@@ -65,6 +65,17 @@ uploadArchives {
     }
 }
 
+def installer = install.repositories.mavenInstaller
+def deployer = uploadArchives.repositories.mavenDeployer
+
+[installer, deployer]*.pom*.whenConfigured {pom ->
+    def dependencyMap = project.configurations.compile.dependencies.collectEntries { [it.name, it] }
+    pom.dependencies.findAll {
+        def dep = dependencyMap[it.artifactId]
+        return dep?.hasProperty('optional') && dep.optional
+    }*.optional = true
+}
+
 release {
     tagTemplate = '${version}'
 

@@ -53,6 +53,9 @@ configurations.all {
 dependencies {
 
     compile (libraries.springCloudFeign)
+    compile (libraries.springBootConfigurationProcessor) {
+        ext.optional = true
+    }
 
     testCompile (libraries.springCloudRibbon)
     testCompile (libraries.feignCore)
