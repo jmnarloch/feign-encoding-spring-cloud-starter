@@ -47,8 +47,8 @@ Starting from release 1.1 you gain more control over client side request compres
 that should be compressed in order not to penalize performance of compressing too small requests. 
 
 ```
-feign.compression.min-request-size: 2048 # the minimum request size
-feign.compression.mime-types: application/xml,application/json # the request mime types 
+feign.compression.min-request-size=2048 # the minimum request size
+feign.compression.mime-types=text/xml,application/xml,application/json # the request mime types 
 ```
 
 ## Server side setup
