@@ -3,7 +3,7 @@
 > A Spring Cloud Feign extension for request/response compression.
 
 [![Build Status](https://travis-ci.org/jmnarloch/feign-encoding-spring-cloud-starter.svg?branch=master)](https://travis-ci.org/jmnarloch/feign-encoding-spring-cloud-starter)
-
+[![Coverage Status](https://coveralls.io/repos/jmnarloch/feign-encoding-spring-cloud-starter/badge.svg?branch=master&service=github)](https://coveralls.io/github/jmnarloch/feign-encoding-spring-cloud-starter?branch=master)
 ## Features
 
 Enables Feign request and response GZIP compression. 
